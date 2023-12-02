@@ -1,0 +1,30 @@
+button{
+    border: none;
+    background: none;
+    height: 60px;
+    outline: none;
+    padding-right: 15px;
+}
+
+
+button:hover{
+    background: #000000;
+}
+
+
+
+.toolbar{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+
+#editor{
+    max-width: 800px;
+    margin: 20px auto;
+    height:800px auto;
+    border: 1px solid #000000;
+    padding: 10px;
+}
