@@ -53,3 +53,43 @@ document.querySelectorAll('.right').forEach(function (element) {
 document.querySelectorAll('.justify').forEach(function (element) {
     element.addEventListener('click', alignJustify);
 });
+
+var past = [];
+var now = 0;
+
+function saveState() {
+    past.push({
+        content: document.getElementById('editor').innerHTML,
+        alignment: document.getElementById('editor').style.textAlign
+    });
+    now++;
+}
+
+
+function applyState() {
+    document.getElementById('editor').innerHTML = past[now].content;
+    document.getElementById('editor').style.textAlign = past[now].alignment;
+}
+
+
+function undo() {
+    if (now > 0) {
+        now--;
+        applyState();
+    }
+}
+
+
+function redo() {
+    if (now < past.length - 1) {
+        now++;
+        applyState();
+    }
+}
+
+
+document.querySelectorAll('#editor').forEach(function (element) {
+    element.addEventListener('input', function () {
+        saveState();
+    });
+});
