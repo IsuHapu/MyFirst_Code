@@ -17,3 +17,39 @@ function color() {
     document.execCommand('foreColor', false, clr);
     document.getElementById('color_selector').style.backgroundColor = clr;
 }
+
+
+
+function alignText(alignType) {
+    return function () {
+        document.getElementById('editor').style.textAlign = alignType;
+        document.execCommand('justify' + alignType, true, null);
+    }
+}
+
+var alignLeft = alignText('left');
+var alignCenter = alignText('center');
+var alignRight = alignText('right');
+var alignJustify = alignText('justify');
+
+
+
+
+document.querySelectorAll('.left').forEach(function (element) {
+    element.addEventListener('click', alignLeft);
+});
+
+
+document.querySelectorAll('.center').forEach(function (element) {
+    element.addEventListener('click', alignCenter);
+});
+
+
+document.querySelectorAll('.right').forEach(function (element) {
+    element.addEventListener('click', alignRight);
+});
+
+
+document.querySelectorAll('.justify').forEach(function (element) {
+    element.addEventListener('click', alignJustify);
+});
